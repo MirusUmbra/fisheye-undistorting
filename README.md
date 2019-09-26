@@ -6,7 +6,7 @@ the undistorting process work. So i viewed http://paulbourke.net/dome/fisheye/ a
 image to hemisphere surface, and wrote undistorting in my own way.
 
 opencv version :
-==
+-
 First my input datas of calibrateing chessboard will locate corner points, then give those points to fisheye  
 calibrating of opencv which based on [Zhengyou Zhang's 1999 paper](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr98-71.pdf) , this will measure internal and external  
 parameters, and distortion coefficients. So you can use those parameters 
@@ -14,9 +14,9 @@ to remap every pixels.</br>
 I already have wrote functions including undistorting from image data, video data and stream.
 	
 no opencv version :
-==
+-
 By following Paul's web, first you'd better consider every pixels with polar coordinates and sphere coordinates,  
-using length and angle to describe pixels, then you can easily calculate whole projection. To undistorting,  
+using length and angle to describe pixels, then you can easily calculate whole projection. To undistort,  
 all you need to do is to make every coordinates on hemisphere map to the new plane - your output plane.</br>
 ![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/projection.png)</br>
 We can easily knowing what we actually want is phi and distance to the center of one point, using similar  
@@ -26,9 +26,11 @@ I have wrote three version : without interpolation, with interpolation and optim
 images only, and i didn't consider distorting parameters, maybe i will add it in future. I only upload last two 
 version.</br>
 Input:  
-![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/201906281658402.png)</br>
+![mat](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/201906281658402.png)</br>
 Outputs in three way:  
-![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/res.png)![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/r1.png)![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/r2.png)</br>
+![res1](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/res.png)</br>
+![res2](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/r1.png)</br>
+![res3](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/r2.png)</br>
 
 Per 640*480 image on my very old computer using second way cost 17.25s, and the last way cost 0.395s, speed  
 up for 4300%
