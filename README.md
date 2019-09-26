@@ -18,9 +18,19 @@ no opencv version :
 By following Paul's web, first you'd better consider every pixels with polar coordinates and sphere coordinates,  
 using length and angle to describe pixels, then you can easily calculate whole projection. To undistorting,  
 all you need to do is to make every coordinates on hemisphere map to the new plane - your output plane.</br>
+![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/projection.png)</br>
 We can easily knowing what we actually want is phi and distance to the center of one point, using similar  
 rectangle you can transform distance to center on output plane and input plane (this actually uses angle theta), 
 and both output plane and input plane have same phi.</br>
 I have wrote three version : without interpolation, with interpolation and optimizing with matrix. Dealing gray 
 images only, and i didn't consider distorting parameters, maybe i will add it in future. I only upload last two 
-version.
+version.</br>
+Input:  
+![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/201906281658402.png)</br>
+Outputs in three way:  
+![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/res.png)![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/r1.png)![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/r2.png)</br>
+
+Per 640*480 image on my very old computer using second way cost 17.25s, and the last way cost 0.395s, speed  
+up for 4300%
+
+
