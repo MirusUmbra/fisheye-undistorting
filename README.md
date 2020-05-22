@@ -23,7 +23,7 @@ No opencv version :
 By following Paul's web, first you'd better consider every pixels with polar coordinates and sphere coordinates,  
 using length and angle to describe pixels, then you can easily calculate whole projection. To undistort,  
 all you need to do is to make every coordinates on hemisphere map to the new plane - your output plane.</br>
-![projection](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/projection.png)</br>
+![projection](https://raw.githubusercontent.com/MirusUmbra/Display-data/master/fisheye/projection.png?token=AJZQ6R7MO3PLRXAZE7MLUGS6Y644U)</br>
 由上图可知反畸变其实就是将输入图像input平面上坐标映射到新平面output上, 利用极坐标系和相似三角形(不需要球坐标系的theta).  
 一般我们已知r和L(r是镜头半径, L是input和output平面的距离, 一般情况下r等于L), 则利用图上中关系式可求每一点坐标前后映射.  
 We can easily knowing what we actually want is phi and distance to the center of one point, using similar  
@@ -33,17 +33,17 @@ I wrote three version : without interpolation, with interpolation and optimizing
 images only, and i didn't consider distorting parameters, maybe i will add it in future. I only upload last two 
 version.</br>
 Input:  
-![mat](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/201906281658402.png)</br>
+![mat](https://raw.githubusercontent.com/MirusUmbra/Display-data/master/fisheye/201906281658402.png?token=AJZQ6R2LIMAV3XQGXJSTINS6Y646I)</br>
 Outputs in three way:  
 实际上真正从原图映射到输出图像的原始数据是会像下面这张无插值的输出, 黑色的空缺通过插值算法填充 :  
 Without interpolation :  
-![res1](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/res.png)</br>
+![res1](https://raw.githubusercontent.com/MirusUmbra/Display-data/master/fisheye/res.png?token=AJZQ6R26XN2Z2XSR3LM6WUK6Y647I)</br>
 线性插值 :  
 Linear interpolation :  
-![res2](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/r1.png)</br>
+![res2](https://raw.githubusercontent.com/MirusUmbra/Display-data/master/fisheye/r1.png?token=AJZQ6R2JUAPSX5VGDBU227C6Y65AK)</br>
 矩阵加速, 由于矩阵运算的局限性, 在边缘区域所有扩展都是边缘拉伸, 但是不影响上图一样的有效区域内变化 : 
 Speed up by using mtrix :  
-![res3](https://github.com/MirusUmbra/Display-data/raw/master/fisheye/r2.png)</br>
+![res3](https://raw.githubusercontent.com/MirusUmbra/Display-data/master/fisheye/r2.png?token=AJZQ6R5XMM3L4VHCGNUZYUK6Y65BE)</br>
 
 
 代码里有两个版本, 前一个遍历每一pixel进行插值和映射, 后一个利用矩阵加速, 在我的数据和设备能上提升43倍, 满足实时处理.</br>
